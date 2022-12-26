@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: first-web-app
+  template:
+    metadata:
+      name: first-web-app
+      labels:
+        app: first-web-app
+    spec: 
+      containers:
+        - name: my-nginx-app
+          image: andrewnazeh/nginx-first
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
